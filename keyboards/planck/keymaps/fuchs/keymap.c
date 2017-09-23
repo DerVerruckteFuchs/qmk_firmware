@@ -58,38 +58,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   7  |   8  |   9  |   /  |   *  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  \   |
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   4  |   5  |   6  |   -  | Bksp |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * |   &  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |   1  |   2  |   3  |   +  |ISO | |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |             |      |   0  |   .  |   =  |ISO ~ |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC},
-  {KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_BSLS},
-  {_______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______},
-  {_______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY}
+  {KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_7,    KC_8,    KC_9,    KC_PSLS,  KC_PAST},
+  {KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_4,    KC_5,    KC_6,    KC_PMNS,  KC_BSPC},
+  {KC_AMPR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_1,    KC_2,    KC_3,    KC_PPLS, S(KC_NUBS)},
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_PDOT, KC_PEQL,  S(KC_NUHS)}
 },
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |  F1  |  F2  |  F3  |  F4  |   7  |   8  |   9  |   /  |   *  |   /  | Bksp |
+ * |   `  |  F1  |  F2  |  F3  |  F4  |   !  |   @  |   (  |   )  |   <  |   >  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F5  |  F6  |  F7  |  F8  |   4  |   5  |   6  |   -  |   [  |   ]  |  \   |
+ * | Del  |  F5  |  F6  |  F7  |  F8  |   #  |   $  |   [  |   ]  |Pg up |Pg Dn |   |  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F9  | F10  | F11  |  F12 |   1  |   2  |   3  |   =  |Enter |Pg Up |Pg Dn |
+ * |      |  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |ISO \ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      0      |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |   &  |   *  |      |      | Next | Play |ISO # |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
-  {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_7,    KC_8,    KC_9,    KC_SLSH, KC_ASTR,  KC_SLSH, KC_BSPC},
-  {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_4,    KC_5,    KC_6,    KC_MINS,  KC_LBRC, KC_RBRC, KC_PIPE},
-  {_______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_1,    KC_2,    KC_3,    KC_EQL,   KC_ENT, KC_PGUP, KC_PGDN},
-  {_______, _______, _______, _______, _______, KC_0,    KC_0,    _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY}
+  {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
+  {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
+  {_______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_NUBS},
+  {_______, _______, _______, _______, _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_NUHS}
 },
 
 /* Adjust (Lower + Raise)
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = {
   {_______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, DVORAK,  RUNIC,   _______,   _______, _______},
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, DVORAK,  RUNIC,   _______, _______, _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 },
