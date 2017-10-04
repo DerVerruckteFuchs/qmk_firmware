@@ -33,8 +33,31 @@ enum planck_keycodes {
   RUNIC,
   LOWER,
   RAISE,
-  BACKLIT
+  BACKLIT,
+  SPACE_ONE,
+  SPACE_TWO,
+  SPACE_THREE,
+  SPACE_FOUR,
+  SPACE_FIVE,
+  SPACE_SIX,
+  SPACE_SEVEN,
+  SPACE_EIGHT,
+  SPACE_NINE
 };
+/*
+// Macros for GUI + Num
+enum custom_keycodes {
+    	SPACE_ONE = SAFE_RANGE,
+	SPACE_TWO,
+	SPACE_THREE,
+	SPACE_FOUR,
+	SPACE_FIVE,
+	SPACE_SIX,
+	SPACE_SEVEN,
+	SPACE_EIGHT,
+	SPACE_NINE
+};
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -46,14 +69,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Brite| Ctrl | GUI  | Alt  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC},
   {KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS},
   {KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT },
-  {BL_STEP, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT}
+  {BL_STEP, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT}
 },
 
 /* Lower
@@ -62,16 +85,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   4  |   5  |   6  |   -  | Bksp |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |   &  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |   1  |   2  |   3  |   +  |ISO | |
+ * |   &  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |   1  |   2  |   3  |   +  |   |  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |   0  |   .  |   =  |ISO ~ |
+ * |      |      |      |      |      |             |      |   0  |   .  |   =  |   /  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
   {KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_7,    KC_8,    KC_9,    KC_PSLS,  KC_PAST},
   {KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_4,    KC_5,    KC_6,    KC_PMNS,  KC_BSPC},
-  {KC_AMPR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_1,    KC_2,    KC_3,    KC_PPLS, S(KC_NUBS)},
-  {_______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_PDOT, KC_PEQL,  S(KC_NUHS)}
+  {KC_AMPR, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_1,    KC_2,    KC_3,    KC_PPLS,  KC_PIPE},
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_PDOT, KC_PEQL,  KC_SLSH}
 },
 
 /* Raise
@@ -80,34 +103,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |  F5  |  F6  |  F7  |  F8  |   #  |   $  |   [  |   ]  |Pg up |Pg Dn |   |  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |ISO \ |
+ * |      |  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |   &  |   *  |      |      | Next | Play |ISO # |
+ * |      |      |      |      |      |   &  |   *  |      |      | Next | Play |   \  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
   {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
-  {_______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_NUBS},
-  {_______, _______, _______, _______, _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_NUHS}
+  {_______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
+  {_______, _______, _______, _______, _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
 },
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
+ * |      | Reset|      |      |      |      |      |Space7|Space8|Space9|      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Dvorak|Runic |      |      |      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
+ * |Shift |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Space1|Space2|Space3|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {_______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, DVORAK,  RUNIC,   _______, _______, _______},
-  {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______},
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
+  {_______, RESET,   DEBUG,   _______, _______, _______, _______, SPACE_SEVEN, SPACE_EIGHT, SPACE_NINE,  DVORAK,  KC_DEL },
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, SPACE_FOUR,  SPACE_FIVE,  SPACE_SIX,   RUNIC,   _______},
+  {KC_LSFT, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  SPACE_ONE,   SPACE_TWO,   SPACE_THREE, _______, TERM_ON},
+  {_______, _______, _______, _______, _______, _______, _______, _______,     _______,     _______,     _______, TERM_OFF}
 },
 
 /* Runic
@@ -177,6 +200,62 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+   // Workspace switching
+   case SPACE_ONE:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("1"));
+      }
+      return false;
+      break;
+   case SPACE_TWO:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("2"));
+      }
+      return false;
+      break;
+   case SPACE_THREE:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("3"));
+      }
+      return false;
+      break;
+   case SPACE_FOUR:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("4"));
+      }
+      return false;
+      break;
+   case SPACE_FIVE:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("5"));
+      }
+      return false;
+      break;
+   case SPACE_SIX:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("6"));
+      }
+      return false;
+      break;
+   case SPACE_SEVEN:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("7"));
+      }
+      return false;
+      break;
+   case SPACE_EIGHT:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("8"));
+      }
+      return false;
+      break;
+   case SPACE_NINE:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LGUI("9"));
+      }
+      return false;
+      break;
+
   }
   return true;
 }
