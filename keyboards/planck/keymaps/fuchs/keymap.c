@@ -42,7 +42,9 @@ enum planck_keycodes {
   SPACE_SIX,
   SPACE_SEVEN,
   SPACE_EIGHT,
-  SPACE_NINE
+  SPACE_NINE,
+  ZOOM_IN,
+  ZOOM_OUT
 };
 /*
 // Macros for GUI + Num
@@ -103,23 +105,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |  F5  |  F6  |  F7  |  F8  |   #  |   $  |   [  |   ]  |Pg up |Pg Dn |   |  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
+ * |Zoom +|  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |   &  |   *  |      |      | Next | Play |   \  |
+ * |Zoom -|      |      |   +  |      |   &  |   *  |      |      | Next | Play |   \  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
   {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
-  {_______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
-  {_______, _______, _______, _______, _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
+  {ZOOM_IN, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
+  {ZOOM_OUT, _______, _______, S(KC_EQL), _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
 },
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |Shift | Reset|      |      |      |      |      |Space7|Space8|Space9|      |  Del |
+ * |Shift | Reset|      |      |      |      |      |Space7|Space8|Space9|Dvorak|  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|      |      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|Runic |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Space1|Space2|Space3|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -231,7 +233,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-   case SPACE_SIX:
+      case SPACE_SIX:
       if (record->event.pressed) {
       SEND_STRING(SS_LGUI("6"));
       }
@@ -255,6 +257,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+   case ZOOM_IN:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("+"));
+      }
+      return false;
+      break;
+   case ZOOM_OUT:
+      if (record->event.pressed) {
+      SEND_STRING(SS_LCTRL("-"));
+      }
 
   }
   return true;
