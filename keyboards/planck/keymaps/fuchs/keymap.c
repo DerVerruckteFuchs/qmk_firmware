@@ -117,19 +117,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|      |      |      |      |      |Space7|Space8|Space9|      |  Del |
+ * |Shift | Reset|      |      |      |      |      |Space7|Space8|Space9|      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |Shift |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Space1|Space2|Space3|      |      |
+ * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Space1|Space2|Space3|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {_______, RESET,   DEBUG,   _______, _______, _______, _______, SPACE_SEVEN, SPACE_EIGHT, SPACE_NINE,  DVORAK,  KC_DEL },
+  {KC_LSFT, RESET,   DEBUG,   _______, _______, _______, _______, SPACE_SEVEN, SPACE_EIGHT, SPACE_NINE,  DVORAK,  KC_DEL },
   {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, SPACE_FOUR,  SPACE_FIVE,  SPACE_SIX,   RUNIC,   _______},
-  {KC_LSFT, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  SPACE_ONE,   SPACE_TWO,   SPACE_THREE, _______, TERM_ON},
+  {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  SPACE_ONE,   SPACE_TWO,   SPACE_THREE, _______, TERM_ON},
   {_______, _______, _______, _______, _______, _______, _______, _______,     _______,     _______,     _______, TERM_OFF}
 },
 
