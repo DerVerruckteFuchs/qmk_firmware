@@ -17,6 +17,7 @@
 #include "planck.h"
 #include "action_layer.h"
 #include "keymap_runic.h"
+#include "keymap_punctuation.h"
 
 extern keymap_config_t keymap_config;
 
@@ -107,14 +108,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Zoom +|  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Zoom -|      |      |   +  |      |   &  |   *  |      |      | Next | Play |   \  |
+ * |Zoom -|   ⸮  |   ‽  |   +  |      |   &  |   *  |      |      | Next | Play |   \  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
   {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
   {ZOOM_IN, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
-  {ZOOM_OUT, _______, _______, S(KC_EQL), _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
+  {ZOOM_OUT, PERCON, INBANG, S(KC_EQL), _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
 },
 
 /* Adjust (Lower + Raise)
