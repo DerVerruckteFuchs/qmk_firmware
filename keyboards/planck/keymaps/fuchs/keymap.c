@@ -90,14 +90,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |   ⸮  |      |   %  |   ^  |   1  |   2  |   3  |   +  |   |  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |   &  |   *  |      |   0  |   .  |   =  |   /  |
+ * |      | Ctrl | GUI  | Alt  |      |   &  |   *  |      |   0  |   .  |   =  |   /  |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
   {KC_TILD, _______, _______, S(KC_SLSH), KC_PIPE, KC_EXLM, KC_AT,   KC_7,    KC_8,    KC_9,   KC_SLSH,   KC_ASTR},
   {KC_DEL,  _______, _______, INBANG,     KC_BSLS, KC_HASH, KC_DLR,  KC_4,    KC_5,    KC_6,   KC_MINS,   KC_BSPC},
   {_______, _______, _______, PERCON,     _______, KC_PERC, KC_CIRC, KC_1,    KC_2,    KC_3,   S(KC_EQL), KC_PIPE},
-  {_______, _______, _______, _______,    _______, KC_AMPR, KC_ASTR, _______, KC_0,    KC_DOT, KC_EQL,    KC_SLSH}
+  {_______, KC_LCTL, KC_LGUI, KC_LALT,    _______, KC_AMPR, KC_ASTR, _______, KC_0,    KC_DOT, KC_EQL,    KC_SLSH}
 },
 
 /* Raise
