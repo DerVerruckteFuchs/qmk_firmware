@@ -35,6 +35,7 @@ enum planck_keycodes {
   LOWER,
   RAISE,
   BACKLIT,
+  TTY,
   SPACE_ONE,
   SPACE_TWO,
   SPACE_THREE,
@@ -108,19 +109,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Zoom +|  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Zoom -|   ⸮  |   ‽  |   ?  |      |   &  |   *  |      |      | Next | Play |   \  |
+ * |Zoom -|      |      |  TTY |      |   &  |   *  |      |      | Next | Play |   \  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
   {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
   {ZOOM_IN, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
-  {ZOOM_OUT, PERCON, INBANG, S(KC_SLSH), _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
+  {ZOOM_OUT, _______, _______, LCTL(KC_LALT),    _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
 },
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |Shift | Reset|      |      |      |      |      |Space7|Space8|Space9|Dvorak|  Del |
+ * |Shift | Reset| Debug|      |      |      |      |Space7|Space8|Space9|Dvorak|  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|Runic |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -203,6 +204,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+   /*// TTY switching
+   case TTY:
+      if (record->event.pressed) {
+      OSM(MOD_LCTL);
+      }
+      return false;
+      break;*/
    // Workspace switching
    case SPACE_ONE:
       if (record->event.pressed) {

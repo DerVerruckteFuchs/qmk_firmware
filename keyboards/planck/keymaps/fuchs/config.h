@@ -3,6 +3,9 @@
 
 #include "../../config.h"
 
+// enable oneshot keycodes
+#define ONESHOT_TIMEOUT 5000
+
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PLANCK_SOUND)
     // #define STARTUP_SONG SONG(NO_SOUND)
