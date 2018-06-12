@@ -3,7 +3,7 @@
 
 #include "keymap.h"
 
-
+/*
 #define RN_F  UC(0x16A0)
 #define RN_U  UC(0x16A2)
 #define RN_X  UC(0x16A6)
@@ -30,7 +30,8 @@
 #define RN_O  UC(0x16DF)
 
 #endif
-/*
+*/
+
 enum unicode_name {
 RN_F,
 RN_U,
@@ -55,7 +56,9 @@ RN_M,
 RN_L,
 RN_Q,
 RN_D,
-RN_O
+RN_O,
+INBANG,
+PERCON
 };
 
 // Default Runes for Dieter Rams Canvas keycaps
@@ -150,4 +153,5 @@ const uint32_t PROGMEM unicode_map[] = {
 //[ᛷ] = 0x16F7,
 //[ᛸ] = 0x16F8,
 };
-*/
+
+#endif

@@ -148,6 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Brite| Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
+
 [_RUNIC] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  RN_P,    RN_Y,    RN_F,    RN_G,    RN_KC,   RN_R,    RN_L,  KC_BSPC},
   {KC_ESC,  RN_A,    RN_O,    RN_E,    RN_U,    RN_I,    RN_D,    RN_H,    RN_T,    RN_N,    RN_S,  KC_UNDS},
@@ -169,7 +170,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case RUNIC:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_RUNIC);
-	set_unicode_input_mode(UC_LNX);
+	//set_unicode_input_mode(UC_LNX);
+	//set_unicode_input_mode(UNICODEMAP_ENABLE);
       }
       return false;
       break;
