@@ -1,63 +1,117 @@
 #ifndef KEYMAP_FRAKTUR
 #define KEYMAP_FRAKTUR
+enum unicode_name {
+// Fraktur uppercase
+FR_A,
+FR_B,
+FR_C,
+FR_D,
+FR_E,
+FR_F,
+FR_G,
+FR_H,
+FR_I,
+FR_J,
+FR_K,
+FR_L,
+FR_M,
+FR_N,
+FR_O,
+FR_P,
+FR_Q,
+FR_R,
+FR_S,
+FR_T,
+FR_U,
+FR_V,
+FR_W,
+FR_X,
+FR_Y,
+FR_Z,
+// Fraktur lowercase
+FR_a,
+FR_b,
+FR_c,
+FR_d,
+FR_e,
+FR_f,
+FR_g,
+FR_h,
+FR_i,
+FR_j,
+FR_k,
+FR_l,
+FR_m,
+FR_n,
+FR_o,
+FR_p,
+FR_q,
+FR_r,
+FR_s,
+FR_t,
+FR_u,
+FR_v,
+FR_w,
+FR_x,
+FR_y,
+FR_z
+};
 
-#include "keymap.h"
-/*
-// uppercase
-#define FR_A  UC(0x1D504)
-#define FR_B  UC(0x1D505)
-#define FR_C  UC(0x1D506)
-#define FR_D  UC(0x1D507)
-#define FR_E  UC(0x1D508)
-#define FR_F  UC(0x1D509)
-#define FR_G  UC(0x1D50A)
-#define FR_H  UC(0x1D50B)
-#define FR_I  UC(0x1D50C)
-#define FR_J  UC(0x1D50D)
-#define FR_K  UC(0x1D50E)
-#define FR_L  UC(0x1D50F)
-#define FR_M  UC(0x1D510)
-#define FR_N  UC(0x1D511)
-#define FR_O  UC(0x1D512)
-#define FR_P  UC(0x1D513)
-#define FR_Q  UC(0x1D514)
-#define FR_R  UC(0x1D515)
-#define FR_S  UC(0x1D516)
-#define FR_T  UC(0x1D517)
-#define FR_U  UC(0x1D518)
-#define FR_V  UC(0x1D519)
-#define FR_W  UC(0x1D51A)
-#define FR_X  UC(0x1D51B)
-#define FR_Y  UC(0x1D51C)
-#define FR_Z  UC(0x1D51D)
-// lowercase
-#define FR_a  UC(0x1D51E)
-#define FR_b  UC(0x1D51F)
-#define FR_c  UC(0x1D520)
-#define FR_d  UC(0x1D521)
-#define FR_e  UC(0x1D522)
-#define FR_f  UC(0x1D523)
-#define FR_g  UC(0x1D524)
-#define FR_h  UC(0x1D525)
-#define FR_i  UC(0x1D526)
-#define FR_j  UC(0x1D527)
-#define FR_k  UC(0x1D528)
-#define FR_l  UC(0x1D529)
-#define FR_m  UC(0x1D52A)
-#define FR_n  UC(0x1D52B)
-#define FR_o  UC(0x1D52C)
-#define FR_p  UC(0x1D52D)
-#define FR_q  UC(0x1D52E)
-#define FR_r  UC(0x1D52F)
-#define FR_s  UC(0x1D530)
-#define FR_t  UC(0x1D531)
-#define FR_u  UC(0x1D532)
-#define FR_v  UC(0x1D533)
-#define FR_w  UC(0x1D534)
-#define FR_x  UC(0x1D535)
-#define FR_y  UC(0x1D536)
-#define FR_z  UC(0x1D537)
-*/
-
+const uint32_t PROGMEM unicode_map[] = {
+// Fraktur uppercase
+[FR_A] = 0x1D504,
+[FR_B] = 0x1D505,
+[FR_C] = 0x1D506,
+[FR_D] = 0x1D507,
+[FR_E] = 0x1D508,
+[FR_F] = 0x1D509,
+[FR_G] = 0x1D50A,
+[FR_H] = 0x1D50B,
+[FR_I] = 0x1D50C,
+[FR_J] = 0x1D50D,
+[FR_K] = 0x1D50E,
+[FR_L] = 0x1D50F,
+[FR_M] = 0x1D510,
+[FR_N] = 0x1D511,
+[FR_O] = 0x1D512,
+[FR_P] = 0x1D513,
+[FR_Q] = 0x1D514,
+[FR_R] = 0x1D515,
+[FR_S] = 0x1D516,
+[FR_T] = 0x1D517,
+[FR_U] = 0x1D518,
+[FR_V] = 0x1D519,
+[FR_W] = 0x1D51A,
+[FR_X] = 0x1D51B,
+[FR_Y] = 0x1D51C,
+[FR_Z] = 0x1D51D,
+// Fraktur lowercase
+[FR_a] = 0x1D51E,
+[FR_b] = 0x1D51F,
+[FR_c] = 0x1D520,
+[FR_d] = 0x1D521,
+[FR_e] = 0x1D522,
+[FR_f] = 0x1D523,
+[FR_g] = 0x1D524,
+[FR_h] = 0x1D525,
+[FR_i] = 0x1D526,
+[FR_j] = 0x1D527,
+[FR_k] = 0x1D528,
+[FR_l] = 0x1D529,
+[FR_m] = 0x1D52A,
+[FR_n] = 0x1D52B,
+[FR_o] = 0x1D52C,
+[FR_p] = 0x1D52D,
+[FR_q] = 0x1D52E,
+[FR_r] = 0x1D52F,
+[FR_s] = 0x1D530,
+[FR_t] = 0x1D531,
+[FR_u] = 0x1D532,
+[FR_v] = 0x1D533,
+[FR_w] = 0x1D534,
+[FR_x] = 0x1D535,
+[FR_y] = 0x1D536,
+[FR_z] = 0x1D537,
+};
 
 #endif
