@@ -174,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   "  |   ,  |   .  |   ᛈ  |   ᛇ  |   ᚠ  |   ᚷ  |   ᚲ  |   ᚱ  |   ᛚ  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   ᚨ  |   ᛟ  |   ᛖ  |   ᚢ  |   ᛁ  |   ᛞ  |   ᚺ  |   ᛏ  |   ᚾ  |   ᛊ  |  _   |
+ * | Esc  |   ᚨ  |   ᛟ  |   ᛖ  |   ᚢ  |   ᛁ  |   ᛞ  |   ᚺ  |   ᛏ  |   ᚾ  |   ᛋ  |  _   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   ᛜ  |   ᛃ  |   ᚲ  |   ᚦ  |   ᛒ  |   ᛗ  |   ᚹ  |   ᚹ  |   ᛉ  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -225,8 +225,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_ESC,  X(FR_a), X(FR_o), X(FR_e), X(FR_u), X(FR_i), X(FR_d), X(FR_h), X(FR_t), X(FR_n), X(FR_s),  KC_UNDS},
   {FRAKC,   KC_SCLN, X(FR_q), X(FR_j), X(FR_k), X(FR_x), X(FR_b), X(FR_m), X(FR_w), X(FR_v), X(FR_z),  KC_ENT },
   {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  FRAKC,   RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
-},
-/* Cursive
+}/*,
+* Cursive
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   "  |   ,  |   .  |   𝕻  |   𝖄  |   𝕱  |   𝕲  |   𝕮  |   𝕽  |   𝕷  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -236,14 +236,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Brite| Ctrl | GUI  | Alt  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
- */
+ *
 
 [_CURS] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  X(FR_P), X(FR_Y), X(FR_F), X(FR_G), X(FR_C), X(FR_R), X(FR_L),  KC_BSPC},
   {KC_ESC,  X(FR_A), X(FR_O), X(FR_E), X(FR_U), X(FR_I), X(FR_D), X(FR_H), X(FR_T), X(FR_N), X(FR_S),  KC_UNDS},
   {KC_LSFT, KC_SCLN, X(FR_Q), X(FR_J), X(FR_K), X(FR_X), X(FR_B), X(FR_M), X(FR_W), X(FR_V), X(FR_Z),  KC_ENT },
   {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
-}
+}*/
 
 };
 
@@ -252,25 +252,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DVORAK:
       if (record->event.pressed) {
         //print("mode just switched to dvorak and this is a huge string\n");
-	set_single_persistent_default_layer(_DVORAK);
+		set_single_persistent_default_layer(_DVORAK);
       }
       return false;
       break;
     case FRAK:
       if(record->event.pressed) {
-	set_single_persistent_default_layer(_FRAK);
-	set_unicode_input_mode(OS_DETECT());
+		set_single_persistent_default_layer(_FRAK);
+		set_unicode_input_mode(OS_DETECT());
       }
       return false;
       break;
     case FRAKC:
       if(record->event.pressed) {
-	layer_on(_FRAKC);
-	//set_unicode_input_mode(OS_DETECT());
+		layer_on(_FRAKC);
+		//set_unicode_input_mode(OS_DETECT());
       } else {
-	layer_off(_FRAKC);
-	//layer_on(_FRAK);
-	//update_tri_layer(_FRAK, _FRAKC, _ADJUST);
+		layer_off(_FRAKC);
+		//layer_on(_FRAK);
+		//update_tri_layer(_FRAK, _FRAKC, _ADJUST);
       }
       return false;
       break;
