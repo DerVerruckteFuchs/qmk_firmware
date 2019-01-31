@@ -294,8 +294,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case RUNIC:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_RUNIC);
-	//set_unicode_input_mode(UC_LNX);
-	set_unicode_input_mode(OS_DETECT());
+		//set_unicode_input_mode(UC_LNX);
+		set_unicode_input_mode(OS_DETECT());
       }
       return false;
       break;

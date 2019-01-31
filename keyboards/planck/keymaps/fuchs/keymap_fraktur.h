@@ -2,7 +2,7 @@
 #define KEYMAP_FRAKTUR
 
 #include "keymap.h"
-
+/*
 // uppercase
 #define FR_A  UC(0x1D504)
 #define FR_B  UC(0x1D505)
@@ -57,4 +57,7 @@
 #define FR_x  UC(0x1D535)
 #define FR_y  UC(0x1D536)
 #define FR_z  UC(0x1D537)
+*/
+
+
 #endif
