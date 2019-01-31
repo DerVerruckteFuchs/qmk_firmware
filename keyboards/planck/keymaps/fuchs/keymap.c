@@ -53,8 +53,9 @@ enum planck_layers {
   _RUNIC,
   _FRAK,
   _FRAKC,
-  _CURS,
-  _CURSC,
+  //_CURS,
+  //_CURSC,
+  _GAME,
   _LOWER,
   _RAISE,
   _ADJUST
@@ -65,8 +66,9 @@ enum planck_keycodes {
   RUNIC,
   FRAK,
   FRAKC,
-  CURS,
-  CURSC,
+  //CURS,
+  //CURSC,
+  GAME,
   LOWER,
   RAISE,
   BACKLIT,
@@ -158,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |Shift | Reset| Debug|      |      |      |      |Space7|Space8|Space9|Dvorak|  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|Runic |      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Space4|Space5|Space6|Runic | Game |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|Space1|Space2|Space3| FRAK |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -167,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = {
   {KC_LSFT, RESET,   DEBUG,   _______, _______, _______, _______, SPACE_SEVEN, SPACE_EIGHT, SPACE_NINE,  DVORAK,  KC_DEL },
-  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, SPACE_FOUR,  SPACE_FIVE,  SPACE_SIX,   RUNIC,   _______},
+  {_______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, SPACE_FOUR,  SPACE_FIVE,  SPACE_SIX,   RUNIC,   GAME},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  SPACE_ONE,   SPACE_TWO,   SPACE_THREE, FRAK,    TERM_ON},
   {_______, _______, _______, _______, _______, _______, _______, _______,     _______,     _______,     _______, TERM_OFF}
 },
@@ -227,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_ESC,  X(FR_a), X(FR_o), X(FR_e), X(FR_u), X(FR_i), X(FR_d), X(FR_h), X(FR_t), X(FR_n), X(FR_s),  KC_UNDS},
   {FRAKC,   KC_SCLN, X(FR_q), X(FR_j), X(FR_k), X(FR_x), X(FR_b), X(FR_m), X(FR_w), X(FR_v), X(FR_z),  KC_ENT },
   {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  FRAKC,   RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
-}/*,
+},/*
 * Cursive
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   "  |   ,  |   .  |   𝕻  |   𝖄  |   𝕱  |   𝕲  |   𝕮  |   𝕽  |   𝕷  | Bksp |
@@ -247,6 +249,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
 }*/
 
+/* Game
+ * ,-----------------------------------------------------------------------------------.
+ * |   1  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |Shift |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Ctrl |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Alt  |   4  |   3  |   2  | Lower|    Space    |Raise | Left | Down |  Up  | Right|
+ * `-----------------------------------------------------------------------------------'
+ */
+[_GAME] = {
+	{KC_1,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,    KC_BSPC},
+	{KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,   KC_SCLN, KC_QUOT},
+  {KC_LCTL,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, _______},
+  {KC_LALT,   KC_4,    KC_3,    KC_2,    LOWER,  KC_SPC,  KC_SPC,   RAISE,  KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT}
+}
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -293,6 +312,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
       */
+	case GAME:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_GAME);
+		//set_unicode_input_mode(UC_LNX);
+		set_unicode_input_mode(OS_DETECT());
+      }
+      return false;
+      break;
     case RUNIC:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_RUNIC);
