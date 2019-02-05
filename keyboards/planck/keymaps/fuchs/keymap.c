@@ -21,6 +21,8 @@
 //#include "keymap_fraktur.h"
 #include "keymap_unicode.h"
 
+//#define TERM KC_LCTRL(KC_LALT(KC_T))
+
 extern keymap_config_t keymap_config;
 
 
@@ -83,7 +85,8 @@ enum planck_keycodes {
   SPACE_EIGHT,
   SPACE_NINE,
   ZOOM_IN,
-  ZOOM_OUT
+  ZOOM_OUT,
+  TERM
 };
 /*
 // Macros for GUI + Num
@@ -110,14 +113,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | TERM | Alt  | GUI  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC},
   {KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS},
   {KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT },
-  {BL_STEP, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT}
+  {KC_LCTL, TERM, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT}
 },
 
 /* Lower
@@ -146,14 +149,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Zoom +|  F9  | F10  | F11  |  F12 |   %  |   ^  |   {  |   }  | Vol- | Vol+ |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Zoom -|      |      |  TTY |      |   &  |   *  |      |      | Next | Play |   \  |
+ * |Zoom -| BLDEC| BLINC|  TTY |      |   &  |   *  |      |      | Next | Play |   \  |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_LABK, KC_RABK, KC_BSPC},
   {KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_HASH, KC_DLR,  KC_LBRC, KC_RBRC, KC_PGUP, KC_PGDN, KC_PIPE},
   {ZOOM_IN, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_VOLD, KC_VOLU, KC_SLSH},
-  {ZOOM_OUT, _______, _______, LCTL(KC_LALT),    _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
+  {ZOOM_OUT, BL_DEC, BL_INC, LCTL(KC_LALT),    _______, KC_AMPR, KC_ASTR, _______, _______, KC_MNXT, KC_MPLY, KC_BSLS}
 },
 
 /* Adjust (Lower + Raise)
@@ -178,19 +181,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   "  |   ,  |   .  |   ᛈ  |   ᛇ  |   ᚠ  |   ᚷ  |   ᚲ  |   ᚱ  |   ᛚ  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   ᚨ  |   ᛟ  |   ᛖ  |   ᚢ  |   ᛁ  |   ᛞ  |   ᚺ  |   ᛏ  |   ᚾ  |   ᛋ  |  _   |
+ * | Esc  |   ᚨ  |   ᛟ  |   ᛖ  |   ᚢ  |   ᛁ  |   ᛞ  |   ᚺ  |   ᛏ  |   ᚾ  |   ᛋ  |  -   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   ᛜ  |   ᛃ  |   ᚲ  |   ᚦ  |   ᛒ  |   ᛗ  |   ᚹ  |   ᚹ  |   ᛉ  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | TERM | Alt  | GUI  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 
 [_RUNIC] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  X(RN_P), X(RN_Y), X(RN_F), X(RN_G), X(RN_KC),X(RN_R), X(RN_L),  KC_BSPC},
-  {KC_ESC,  X(RN_A), X(RN_O), X(RN_E), X(RN_U), X(RN_I), X(RN_D), X(RN_H), X(RN_T), X(RN_N), X(RN_S),  KC_UNDS},
+  {KC_ESC,  X(RN_A), X(RN_O), X(RN_E), X(RN_U), X(RN_I), X(RN_D), X(RN_H), X(RN_T), X(RN_N), X(RN_S),  KC_MINS},
   {KC_LSFT, KC_SCLN, X(RN_Q), X(RN_J), X(RN_KC),X(RN_X), X(RN_B), X(RN_M), X(RN_VW),X(RN_VW),X(RN_Z),  KC_ENT },
-  {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
+  {KC_LCTL, TERM, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP, KC_RGHT}
 },
 
  /* Fraktur uppercase
@@ -201,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | FRAC |   ;  |   𝕼  |   𝕵  |   𝕶  |   𝖃  |   𝕭  |   𝕸  |   𝖂  |   𝖁  |   𝖅  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |Space |FRAC |Raise  | Left | Down |  Up  |Right |
+ * | Ctrl | TERM | Alt  | GUI  |Lower |Space |FRAC |Raise  | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -209,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  X(FR_P), X(FR_Y), X(FR_F), X(FR_G), X(FR_C), X(FR_R), X(FR_L),  KC_BSPC},
   {KC_ESC,  X(FR_A), X(FR_O), X(FR_E), X(FR_U), X(FR_I), X(FR_D), X(FR_H), X(FR_T), X(FR_N), X(FR_S),  KC_UNDS},
   {FRAKC,    KC_SCLN, X(FR_Q), X(FR_J), X(FR_K), X(FR_X), X(FR_B), X(FR_M), X(FR_W), X(FR_V), X(FR_Z),  KC_ENT },
-  {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  FRAKC,    RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
+  {KC_LCTL, TERM, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  FRAKC,    RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
 },
 
  /* Fraktur lowercase
@@ -220,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |FRAKC |   ;  |   𝖖  |   𝖏  |   𝖐  |   𝖝  |   𝖇  |   𝖒  |   𝖜  |   𝖛  |   𝖟  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |Space |FRAKC |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | TERM | Alt  | GUI  |Lower |Space |FRAKC |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 
@@ -228,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  X(FR_p), X(FR_y), X(FR_f), X(FR_g), X(FR_c), X(FR_r), X(FR_l),  KC_BSPC},
   {KC_ESC,  X(FR_a), X(FR_o), X(FR_e), X(FR_u), X(FR_i), X(FR_d), X(FR_h), X(FR_t), X(FR_n), X(FR_s),  KC_UNDS},
   {FRAKC,   KC_SCLN, X(FR_q), X(FR_j), X(FR_k), X(FR_x), X(FR_b), X(FR_m), X(FR_w), X(FR_v), X(FR_z),  KC_ENT },
-  {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  FRAKC,   RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
+  {KC_LCTL, TERM, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  FRAKC,   RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
 },/*
 * Cursive
  * ,-----------------------------------------------------------------------------------.
@@ -238,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   𝕼  |   𝕵  |   𝕶  |   𝖃  |   𝕭  |   𝕸  |   𝖂  |   𝖁  |   𝖅  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | GUI  | Alt  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | TERM | Alt  | GUI  |Lower |Space |Shift |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  *
 
@@ -246,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  X(FR_P), X(FR_Y), X(FR_F), X(FR_G), X(FR_C), X(FR_R), X(FR_L),  KC_BSPC},
   {KC_ESC,  X(FR_A), X(FR_O), X(FR_E), X(FR_U), X(FR_I), X(FR_D), X(FR_H), X(FR_T), X(FR_N), X(FR_S),  KC_UNDS},
   {KC_LSFT, KC_SCLN, X(FR_Q), X(FR_J), X(FR_K), X(FR_X), X(FR_B), X(FR_M), X(FR_W), X(FR_V), X(FR_Z),  KC_ENT },
-  {BACKLIT, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
+  {KC_LCTL, TERM, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_RSFT, RAISE,   KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT}
 }*/
 
 /* Game
@@ -431,7 +434,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
       SEND_STRING(SS_LCTRL("-"));
       }
-
+	  return false;
+	  break;
+   case TERM:
+	  if (record->event.pressed) {
+		  SEND_STRING(SS_LCTRL(SS_LALT("t")));
+	  }
+	  return false;
+	  break;
   }
   return true;
 }
