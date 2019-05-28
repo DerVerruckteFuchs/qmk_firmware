@@ -31,6 +31,7 @@ RN_O,
 // punctuation
 INBANG,
 PERCON,
+/*
 // Fraktur uppercase
 FR_A,
 FR_B,
@@ -85,6 +86,7 @@ FR_w,
 FR_x,
 FR_y,
 FR_z
+*/
 };
 
 // Default Runes for Dieter Rams Canvas keycaps
@@ -182,6 +184,7 @@ const uint32_t PROGMEM unicode_map[] = {
 // punctuation
 [INBANG] = 0x203D, // ‽, interrobang
 [PERCON] = 0x2E2E, // ⸮, percontation mark, irony mark, sarcasm mark
+/*
 // Fraktur uppercase
 [FR_A] = 0x1D504,
 [FR_B] = 0x1D505,
@@ -236,6 +239,7 @@ const uint32_t PROGMEM unicode_map[] = {
 [FR_x] = 0x1D535,
 [FR_y] = 0x1D536,
 [FR_z] = 0x1D537,
+*/
 };
 
 #endif
